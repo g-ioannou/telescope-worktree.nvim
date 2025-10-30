@@ -5,7 +5,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local Job = require("plenary.job")
-local Path = require("plenary.path")
+local themes = require("telescope.themes")
 
 local M = {}
 
@@ -43,9 +43,23 @@ function M.run(opts)
     return
   end
 
+  if opts.theme then
+    local name = opts.theme
+    if name == "dropdown" then
+      opts = themes.get_dropdown(opts)
+    elseif name == "ivy" then
+      opts = themes.get_ivy(opts)
+    elseif name == "cursor" then
+      opts = themes.get_cursor(opts)
+    else
+      -- fallback: no theme change or log warning
+      vim.notify("Unknown theme: " .. name, vim.log.levels.WARN)
+    end
+  end
+
   pickers
       .new(opts, {
-        prompt_title = "Select Git Worktree",
+        prompt_title = "Change Git Worktree",
         finder = finders.new_table({
           results = worktrees,
         }),

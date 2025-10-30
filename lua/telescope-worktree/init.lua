@@ -2,6 +2,7 @@ local M = {}
 
 M.opts = {
   on_select = nil,
+  theme = "ivy"
 }
 
 -- @param opts table:
