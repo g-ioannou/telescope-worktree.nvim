@@ -1,4 +1,4 @@
-# my_worktree_picker.nvim
+# telescope-worktree.nvim
 
 A Neovim plugin to pick a git worktree directory and execute commands via Telescope.
 
