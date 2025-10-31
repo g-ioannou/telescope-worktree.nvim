@@ -24,7 +24,11 @@ function M.setup(opts)
 end
 
 function M.pick_worktree()
-  require("telescope-worktree.picker").run(M.opts)
+  require("telescope-worktree.picker").pick_worktree(M.opts)
+end
+
+function M.add_worktree()
+  require("telescope-worktree.picker").add_worktree(M.opts)
 end
 
 return M
